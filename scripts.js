@@ -12,11 +12,15 @@ const meal_container = document.getElementById('meal');
 get_meal_btn.addEventListener('click', () => {
   const mealRequest = document.querySelector('#recipereq').value;
   console.log(mealRequest)
-	fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${mealRequest}`)
-		.then(res => res.json())
-		.then(res => {
-		createMeal(res.meals[0]);
-	});
+
+	function fetchData(url) {
+		return fetch(url)
+			.then(res => res.json())
+	}
+
+	fetchData(`https://www.themealdb.com/api/json/v1/1/search.php?s=${mealRequest}`)
+		.then(res => createMeal(res.meals[0]))
+		.catch(error => container.innerHTML = `<h7>Recipe not found :(</h7>`) 
 });
 
 const createMeal = (meal) => {

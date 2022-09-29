@@ -113,6 +113,12 @@
     margin: 1.5rem
   }
 
+  h7 {
+    margin: auto;
+    margin-top: 3vh;
+    font-size: 2rem;
+  }
+
   header {
     display: flex;
     flex-wrap: wrap;
